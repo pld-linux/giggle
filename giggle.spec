@@ -1,4 +1,3 @@
-#
 Summary:	Graphical frontend for git
 Summary(pl.UTF-8):	Graficzna nakładka na git
 Name:		giggle
@@ -9,13 +8,16 @@ Group:		X11/Development/Tools
 Source0:	http://ftp.imendio.com/pub/imendio/giggle/src/%{name}-%{version}.tar.gz
 # Source0-md5:	ef23f4c4d3d30a9338b95437828a7e03
 URL:		http://developer.imendio.com/projects/giggle
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	git-core >= 1.4.4.3
-BuildRequires:	gtksourceview-devel
-BuildRequires:	intltool
-BuildRequires:	libglade2-devel
+BuildRequires:	glib2-devel >= 1:2.12
+BuildRequires:	gtk+2-devel >= 2:2.10
+BuildRequires:	gtksourceview-devel >= 1.8
+BuildRequires:	intltool >= 0.35.0
+BuildRequires:	libglade2-devel >= 1:2.4
 BuildRequires:	libtool
+BuildRequires:	pkgconfig
 Requires:	desktop-file-utils
 Requires:	git-core >= 1.4.4.3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
