@@ -1,12 +1,12 @@
 Summary:	Graphical frontend for git
 Summary(pl.UTF-8):	Graficzna nakładka na git
 Name:		giggle
-Version:	0.2
-Release:	2
+Version:	0.3
+Release:	1
 License:	GPL v2
 Group:		X11/Development/Tools
 Source0:	http://ftp.imendio.com/pub/imendio/giggle/src/%{name}-%{version}.tar.gz
-# Source0-md5:	ef23f4c4d3d30a9338b95437828a7e03
+# Source0-md5:	74baaae976c28fb4a6bdf386d13e38a2
 URL:		http://developer.imendio.com/projects/giggle
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
