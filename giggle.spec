@@ -7,8 +7,8 @@ License:	GPL v2
 Group:		X11/Development/Tools
 Source0:	http://ftp.imendio.com/pub/imendio/giggle/src/%{name}-%{version}.tar.gz
 # Source0-md5:	695b381d42de8338626068dfa5341406
-URL:		http://developer.imendio.com/projects/giggle
 Patch0:		%{name}-pl.patch
+URL:		http://developer.imendio.com/projects/giggle
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	git-core >= 1.4.4.3
@@ -19,8 +19,14 @@ BuildRequires:	intltool >= 0.35.0
 BuildRequires:	libglade2-devel >= 1:2.4
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
-Requires:	desktop-file-utils
+BuildRequires:	rpmbuild(macros) >= 1.311
+Requires(post,postun):	/sbin/ldconfig
+Requires(post,postun):	desktop-file-utils
+Requires(post,postun):	gtk+2
+Requires(post,postun):	hicolor-icon-theme
 Requires:	git-core >= 1.4.4.3
+Requires:	gtk+2 >= 2:2.10
+Requires:	libglade2 >= 1:2.4
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -29,9 +35,9 @@ way to browse and visualize graphically revision trees, change logs,
 diffs, and other useful information.
 
 %description -l pl.UTF-8
-Giggle jest bazującą na GTK+ przeglądarką repozytoriów GIT, dającą
+Giggle jest opartą na GTK+ przeglądarką repozytoriów GIT, dającą
 deweloperom możliwość przeglądania i wizualizacji drzew rewizji, list
-zmian, różnić i innych przydatnych informacji.
+zmian, różnic i innych przydatnych informacji.
 
 %prep
 %setup -q
@@ -71,7 +77,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_libdir}/libgiggle-0.4.so
 %{_datadir}/%{name}
-%{_desktopdir}/*
-%{_iconsdir}/hicolor/*/*
-%{_libdir}/libgiggle-0.4.so
+%{_desktopdir}/*.desktop
+%{_iconsdir}/hicolor/*/*/*
