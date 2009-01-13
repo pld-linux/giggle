@@ -1,3 +1,7 @@
+#
+# Ownership of project changed:
+#     http://live.gnome.org/giggle
+#
 Summary:	Graphical frontend for git
 Summary(pl.UTF-8):	Graficzna nakładka na git
 Name:		giggle
