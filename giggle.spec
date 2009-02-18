@@ -1,23 +1,20 @@
 #
-# Ownership of project changed:
-#     http://live.gnome.org/giggle
-#
 Summary:	Graphical frontend for git
 Summary(pl.UTF-8):	Graficzna nakładka na git
 Name:		giggle
-Version:	0.4
-Release:	1
+Version:	0.4.91
+Release:	0.1
 License:	GPL v2
 Group:		X11/Development/Tools
-Source0:	http://ftp.imendio.com/pub/imendio/giggle/src/%{name}-%{version}.tar.gz
-# Source0-md5:	695b381d42de8338626068dfa5341406
-Patch0:		%{name}-pl.patch
-URL:		http://developer.imendio.com/projects/giggle
+Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/giggle/0.4/%{name}-%{version}.tar.gz
+# Source0-md5:	ea88213fa3c9cbf5c571dd17b0e430ea
+URL:		http://live.gnome.org/giggle
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
+BuildRequires:	evolution-data-server-devel
 BuildRequires:	git-core >= 1.4.4.3
-BuildRequires:	glib2-devel >= 1:2.12
-BuildRequires:	gtk+2-devel >= 2:2.10
+BuildRequires:	glib2-devel >= 1:2.18
+BuildRequires:	gtk+2-devel >= 2:2.12
 BuildRequires:	gtksourceview2-devel >= 2.0
 BuildRequires:	intltool >= 0.35.0
 BuildRequires:	libglade2-devel >= 1:2.4
@@ -45,12 +42,11 @@ zmian, różnic i innych przydatnych informacji.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %{__intltoolize}
 %{__libtoolize}
-%{__aclocal}
+%{__aclocal} -I m4
 %{__autoconf}
 %{__automake}
 %configure
@@ -81,7 +77,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_libdir}/libgiggle-0.4.so
+%attr(755,root,root) %{_libdir}/libgiggle-%{version}.so
+%attr(755,root,root) %{_libdir}/libgiggle-git-%{version}.so
 %{_datadir}/%{name}
 %{_desktopdir}/*.desktop
 %{_iconsdir}/hicolor/*/*/*
