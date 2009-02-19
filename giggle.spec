@@ -1,12 +1,15 @@
 #
+# TODO:
+#	- seperate out libgiggle/libgiggle-git
+#
 Summary:	Graphical frontend for git
 Summary(pl.UTF-8):	Graficzna nakładka na git
 Name:		giggle
 Version:	0.4.91
-Release:	0.1
+Release:	1
 License:	GPL v2
 Group:		X11/Development/Tools
-Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/giggle/0.4/%{name}-%{version}.tar.gz
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/giggle/0.4/%{name}-%{version}.tar.gz
 # Source0-md5:	ea88213fa3c9cbf5c571dd17b0e430ea
 URL:		http://live.gnome.org/giggle
 BuildRequires:	autoconf >= 2.52
@@ -39,6 +42,19 @@ diffs, and other useful information.
 Giggle jest opartą na GTK+ przeglądarką repozytoriów GIT, dającą
 deweloperom możliwość przeglądania i wizualizacji drzew rewizji, list
 zmian, różnic i innych przydatnych informacji.
+
+%package devel
+Summary:	libgiggle development files
+Summary(pl.UTF-8):	Pliki programistyczne libgiggle
+Group:		Development/Libraries
+Requires:	%{name} = %{version}-%{release}
+
+%description devel
+libgiggle development files.
+
+%description devel -l pl.UTF-8
+Pliki programistyczne libgiggle.
+
 
 %prep
 %setup -q
@@ -79,6 +95,20 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libdir}/libgiggle-%{version}.so
 %attr(755,root,root) %{_libdir}/libgiggle-git-%{version}.so
+%dir %{_libdir}/giggle
+%dir %{_libdir}/giggle/plugins
+%attr(755,root,root) %{_libdir}/giggle/plugins/libpersonal-details.so.0.0.0
+%{_libdir}/giggle/plugins/*.xml
 %{_datadir}/%{name}
 %{_desktopdir}/*.desktop
 %{_iconsdir}/hicolor/*/*/*
+
+%files devel
+%defattr(644,root,root,755)
+%dir %{_includedir}/giggle
+%dir %{_includedir}/giggle/libgiggle
+%{_includedir}/giggle/libgiggle/*.h
+%dir %{_includedir}/giggle/libgiggle-git
+%{_includedir}/giggle/libgiggle-git/*.h
+%{_libdir}/*.la
+%ghost %{_libdir}/*.so
