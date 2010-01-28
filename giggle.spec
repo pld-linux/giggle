@@ -5,20 +5,20 @@
 Summary:	Graphical frontend for git
 Summary(pl.UTF-8):	Graficzna nakładka na git
 Name:		giggle
-Version:	0.4.91
+Version:	0.4.95
 Release:	1
 License:	GPL v2
 Group:		X11/Development/Tools
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/giggle/0.4/%{name}-%{version}.tar.gz
-# Source0-md5:	ea88213fa3c9cbf5c571dd17b0e430ea
+# Source0-md5:	b8c385971bcfcd35202fb6f02a79350f
 URL:		http://live.gnome.org/giggle
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	evolution-data-server-devel
 BuildRequires:	git-core >= 1.4.4.3
 BuildRequires:	glib2-devel >= 1:2.18
-BuildRequires:	gtk+2-devel >= 2:2.12
-BuildRequires:	gtksourceview2-devel >= 2.0
+BuildRequires:	gtk+2-devel >= 2:2.18
+BuildRequires:	gtksourceview2-devel >= 2.8
 BuildRequires:	intltool >= 0.35.0
 BuildRequires:	libglade2-devel >= 1:2.4
 BuildRequires:	libtool
@@ -93,12 +93,16 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_libdir}/libgiggle-%{version}.so
-%attr(755,root,root) %{_libdir}/libgiggle-git-%{version}.so
+%attr(755,root,root) %{_libdir}/libgiggle.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libgiggle.so.0
+%attr(755,root,root) %{_libdir}/libgiggle-git.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libgiggle-git.so.0
 %dir %{_libdir}/giggle
 %dir %{_libdir}/giggle/plugins
-%attr(755,root,root) %{_libdir}/giggle/plugins/libpersonal-details.so.0.0.0
-%{_libdir}/giggle/plugins/*.xml
+%dir %{_libdir}/giggle/plugins/%{version}
+%attr(755,root,root) %{_libdir}/giggle/plugins/%{version}/libpersonal-details.so
+%attr(755,root,root) %{_libdir}/giggle/plugins/%{version}/libterminal-view.so
+%{_libdir}/giggle/plugins/%{version}/*.xml
 %{_datadir}/%{name}
 %{_desktopdir}/*.desktop
 %{_iconsdir}/hicolor/*/*/*
