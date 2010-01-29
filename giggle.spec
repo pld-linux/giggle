@@ -15,8 +15,10 @@ URL:		http://live.gnome.org/giggle
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	evolution-data-server-devel
+BuildRequires:	gettext-devel
 BuildRequires:	git-core >= 1.4.4.3
 BuildRequires:	glib2-devel >= 1:2.18
+BuildRequires:	gnome-common
 BuildRequires:	gtk+2-devel >= 2:2.18
 BuildRequires:	gtksourceview2-devel >= 2.8
 BuildRequires:	intltool >= 0.35.0
