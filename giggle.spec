@@ -22,7 +22,6 @@ BuildRequires:	gnome-common
 BuildRequires:	gtk+2-devel >= 2:2.18
 BuildRequires:	gtksourceview2-devel >= 2.8
 BuildRequires:	intltool >= 0.35.0
-BuildRequires:	libglade2-devel >= 1:2.4
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.311
