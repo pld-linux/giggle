@@ -5,12 +5,12 @@
 Summary:	Graphical frontend for git
 Summary(pl.UTF-8):	Graficzna nakładka na git
 Name:		giggle
-Version:	0.4.96
+Version:	0.4.97
 Release:	1
 License:	GPL v2
 Group:		X11/Development/Tools
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/giggle/0.4/%{name}-%{version}.tar.gz
-# Source0-md5:	22ee0b91ee9c4c941cdcc0b5e14d65b9
+# Source0-md5:	3d0a24327fedf2603a94fbbfc43a1da5
 URL:		http://live.gnome.org/giggle
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
