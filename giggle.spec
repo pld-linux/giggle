@@ -6,7 +6,7 @@ Summary:	Graphical frontend for git
 Summary(pl.UTF-8):	Graficzna nakładka na git
 Name:		giggle
 Version:	0.5
-Release:	2
+Release:	3
 License:	GPL v2
 Group:		X11/Development/Tools
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/giggle/0.5/%{name}-%{version}.tar.gz
@@ -28,7 +28,7 @@ BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	vte-devel >= 0.17
 Requires(post,postun):	/sbin/ldconfig
 Requires(post,postun):	desktop-file-utils
-Requires(post,postun):	gtk+2
+Requires(post,postun):	gtk-update-icon-cache
 Requires(post,postun):	hicolor-icon-theme
 Requires:	git-core >= 1.4.4.3
 Requires:	gtk+2 >= 2:2.10
