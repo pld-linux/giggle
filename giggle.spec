@@ -6,7 +6,7 @@ Summary:	Graphical frontend for git
 Summary(pl.UTF-8):	Graficzna nakładka na git
 Name:		giggle
 Version:	0.5
-Release:	3
+Release:	4
 License:	GPL v2
 Group:		X11/Development/Tools
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/giggle/0.5/%{name}-%{version}.tar.gz
@@ -25,7 +25,7 @@ BuildRequires:	intltool >= 0.35.0
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.311
-BuildRequires:	vte-devel >= 0.17
+BuildRequires:	vte0-devel >= 0.17
 Requires(post,postun):	/sbin/ldconfig
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk-update-icon-cache
@@ -67,7 +67,8 @@ Pliki programistyczne libgiggle.
 %{__aclocal} -I m4
 %{__autoconf}
 %{__automake}
-%configure
+%configure \
+	--disable-silent-rules
 %{__make}
 
 %install
@@ -75,6 +76,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/giggle/plugins/*/*.la
 
 %find_lang %{name}
 
