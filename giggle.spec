@@ -5,20 +5,21 @@
 Summary:	Graphical frontend for git
 Summary(pl.UTF-8):	Graficzna nakładka na git
 Name:		giggle
-Version:	0.6.1
+Version:	0.7
 Release:	1
 License:	GPL v2
 Group:		X11/Development/Tools
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/giggle/0.6/%{name}-%{version}.tar.xz
-# Source0-md5:	dd80ffa12f10a1c687bd3e730a14ca8b
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/giggle/0.7/%{name}-%{version}.tar.xz
+# Source0-md5:	f5e756c13d9b59843c05b648901b9f28
 URL:		http://live.gnome.org/giggle
+Patch0:		gtksourceview-3.8.patch
 BuildRequires:	autoconf >= 2.64
 BuildRequires:	automake >= 1.11
-BuildRequires:	evolution-data-server-devel
+BuildRequires:	evolution-data-server-devel >= 3.2
 BuildRequires:	gettext-devel >= 0.17
 BuildRequires:	git-core >= 1.4.4.3
-BuildRequires:	glib2-devel >= 1:2.18
-BuildRequires:	gtk+3-devel >= 3.0.0
+BuildRequires:	glib2-devel >= 1:2.30
+BuildRequires:	gtk+3-devel >= 3.3.12
 BuildRequires:	gtksourceview3-devel >= 3.0.0
 BuildRequires:	intltool >= 0.41.0
 BuildRequires:	itstool
@@ -26,7 +27,7 @@ BuildRequires:	libtool >= 2.2.6
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	tar >= 1:1.22
-BuildRequires:	vte-devel >= 0.26
+BuildRequires:	vte-devel >= 0.28
 BuildRequires:	xz
 BuildRequires:	yelp-tools
 Requires(post,postun):	/sbin/ldconfig
@@ -61,6 +62,7 @@ Pliki programistyczne libgiggle.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__intltoolize}
