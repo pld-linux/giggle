@@ -6,7 +6,7 @@ Summary:	Graphical frontend for git
 Summary(pl.UTF-8):	Graficzna nakładka na git
 Name:		giggle
 Version:	0.7
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		X11/Development/Tools
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/giggle/0.7/%{name}-%{version}.tar.xz
