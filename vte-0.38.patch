@@ -1,0 +1,36 @@
+--- giggle-0.7/configure.ac~	2012-11-01 06:29:01.000000000 +0100
++++ giggle-0.7/configure.ac	2014-11-19 20:07:29.896975342 +0100
+@@ -109,7 +109,7 @@
+ AS_IF([test "x$enable_terminal" = "xyes"],
+       [
+         PKG_CHECK_MODULES([VTE],
+-                          [vte-2.90 >= $VTE_REQUIRED_VERSION],
++                          [vte-2.91 >= $VTE_REQUIRED_VERSION],
+                           [have_vte=yes
+                            AC_DEFINE([HAVE_VTE], [1],
+                                      [Use features from vte])
+--- giggle-0.7/plugins/giggle-view-terminal.c.orig	2014-11-19 20:19:10.433636937 +0100
++++ giggle-0.7/plugins/giggle-view-terminal.c	2014-11-19 20:19:26.986970150 +0100
+@@ -186,19 +186,19 @@
+ 	real_argv[1] = NULL;
+ 	spawn_flags = G_SPAWN_CHILD_INHERITS_STDIN | G_SPAWN_SEARCH_PATH | G_SPAWN_FILE_AND_ARGV_ZERO;
+ 
+-	succes = vte_terminal_fork_command_full (VTE_TERMINAL (terminal),
++	succes = vte_terminal_spawn_sync (VTE_TERMINAL (terminal),
+ 	                                         pty_flags,
+ 	                                         directory,
+ 	                                         real_argv,
+ 	                                         NULL,
+ 	                                         spawn_flags,
+ 	                                         NULL, NULL,
+-	                                         NULL,
++	                                         NULL, NULL,
+ 	                                         &error);
+ 	g_strfreev (real_argv);
+ 
+ 	if (succes == FALSE) {
+-		g_warning ("%s: %s: vte_terminal_fork_command_full failed %s",
++		g_warning ("%s: %s: vte_terminal_spawn_sync failed %s",
+ 		           G_STRLOC, G_STRFUNC, error->message);
+ 		g_error_free (error);
+ 	}

@@ -6,13 +6,14 @@ Summary:	Graphical frontend for git
 Summary(pl.UTF-8):	Graficzna nakładka na git
 Name:		giggle
 Version:	0.7
-Release:	2
+Release:	3
 License:	GPL v2
 Group:		X11/Development/Tools
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/giggle/0.7/%{name}-%{version}.tar.xz
 # Source0-md5:	f5e756c13d9b59843c05b648901b9f28
 URL:		http://live.gnome.org/giggle
 Patch0:		gtksourceview-3.8.patch
+Patch1:		vte-0.38.patch
 BuildRequires:	autoconf >= 2.64
 BuildRequires:	automake >= 1.11
 BuildRequires:	evolution-data-server-devel >= 3.2
@@ -27,7 +28,7 @@ BuildRequires:	libtool >= 2.2.6
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	tar >= 1:1.22
-BuildRequires:	vte-devel >= 0.28
+BuildRequires:	vte-devel >= 0.38
 BuildRequires:	xz
 BuildRequires:	yelp-tools
 Requires(post,postun):	/sbin/ldconfig
@@ -63,6 +64,7 @@ Pliki programistyczne libgiggle.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__intltoolize}
@@ -71,7 +73,8 @@ Pliki programistyczne libgiggle.
 %{__autoconf}
 %{__automake}
 %configure \
-	--disable-silent-rules
+	--disable-silent-rules \
+	--enable-terminal
 %{__make}
 
 %install
